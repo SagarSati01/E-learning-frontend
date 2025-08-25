@@ -14,7 +14,6 @@ const CourseCard = ({ course }) => {
   const { fetchCourses } = CourseData();
 
   const deleteHandler = async (id) => {
-    console.log(id)
     if (confirm("Are you sure you want to delete this course")) {
       try {
         const { data } = await axios.delete(`${server}/api/course/${id}`, {
@@ -42,17 +41,26 @@ const CourseCard = ({ course }) => {
           {user && user.role !== "admin" ? (
             <>
               {user.subscription.includes(course._id) ? (
-                <button className="common-btn"onClick={() => navigate(`/course/study/${course._id}`)} >
+                <button
+                  onClick={() => navigate(`/course/study/${course._id}`)}
+                  className="common-btn"
+                >
                   Study
                 </button>
               ) : (
-                <button className="common-btn" onClick={() => navigate(`/course/${course._id}`)} >
+                <button
+                  onClick={() => navigate(`/course/${course._id}`)}
+                  className="common-btn"
+                >
                   Get Started
                 </button>
               )}
             </>
           ) : (
-            <button onClick={() => navigate(`/course/study/${course._id}`)} className="common-btn" >
+            <button
+              onClick={() => navigate(`/course/study/${course._id}`)}
+              className="common-btn"
+            >
               Study
             </button>
           )}
@@ -66,7 +74,11 @@ const CourseCard = ({ course }) => {
       <br />
 
       {user && user.role === "admin" && (
-        <button onClick={() => deleteHandler(course._id)} className="common-btn" style={{ background: "red" }} >
+        <button
+          onClick={() => deleteHandler(course._id)}
+          className="common-btn"
+          style={{ background: "red" }}
+        >
           Delete
         </button>
       )}

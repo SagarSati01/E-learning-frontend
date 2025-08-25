@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css';
 import {BrowserRouter,Routes,Route}from 'react-router-dom';
 
-import Header from './components/header/header';
+import Header from './components/header/Header';
 
 import Home from './pages/home/Home';
 import Login from './pages/auth/Login';
@@ -22,6 +22,8 @@ import Lecture from './pages/lecture/Lecture';
 import AdminDashboard from './admin/Dashboard/AdminDashboard';
 import AdminCourses from './admin/Courses/AdminCourses';
 import AdminUsers from './admin/Users/AdminUsers';
+import ForgotPassword from './pages/auth/ForgotPassword';
+import ResetPassword from './pages/auth/ResetPassword';
 
 
 const App = () => {
@@ -40,6 +42,8 @@ const App = () => {
             <Route path="/login" element={isAuth?<Home/>:<Login/>}/>
             <Route path="/register" element={isAuth?<Home/>:<Register/>}/>
             <Route path="/verify" element={isAuth?<Home/>:<Verify/>}/>
+            <Route path="/forgot" element={isAuth?<Home/>:<ForgotPassword/>}/>
+            <Route path="/reset-password/:token" element={isAuth?<Home/>:<ResetPassword/>}/>
             <Route path="/course/:id" element={isAuth?<CourseDescription user={user}/>:<Login/>}/>
             <Route path="/payment-success-page/:id" element={isAuth?<PaymentSuccess user={user}/> :<Login/>}/>
             <Route path="/:id/dashboard" element={isAuth?<Dashboard user={user}/> :<Login/>}/>
